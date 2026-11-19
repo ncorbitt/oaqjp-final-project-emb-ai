@@ -29,6 +29,10 @@ def emo_detector():
     # Pass the text to the emotion_detector function and store the response
     response = emotion_detector(text_to_analyze)
 
+    if response['dominant_emotion'] is None:
+        return f"Invalid text! Please try again!"
+
+
     # Return a formatted string 
     return f"\
     For thr given statement, the system repsonse is: \
@@ -44,4 +48,4 @@ def emo_detector():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5001)
+    app.run(host="0.0.0.0", port=5003)
