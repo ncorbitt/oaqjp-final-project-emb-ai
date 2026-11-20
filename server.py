@@ -23,6 +23,7 @@ def render_index_page():
 
 @app.route("/emotionDetector")
 def emo_detector():
+    """Send text to be Analyze to the emotion detector"""
     # Retrieve the text to analyze from the request arguments
     text_to_analyze = request.args.get('textToAnalyze')
 
@@ -30,10 +31,10 @@ def emo_detector():
     response = emotion_detector(text_to_analyze)
 
     if response['dominant_emotion'] is None:
-        return f"Invalid text! Please try again!"
+        return "Invalid text! Please try again!"
 
 
-    # Return a formatted string 
+    # Return a formatted string
     return f"\
     For thr given statement, the system repsonse is: \
     'anger': {response['anger']},\
